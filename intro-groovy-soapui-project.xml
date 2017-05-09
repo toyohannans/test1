@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="aa1e042e-380b-42fb-a381-4065e435d76c" activeEnvironment="Default" name="intro groovy" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="57a7ff5e-094b-4fab-adc8-b76c8caae14e" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b79ff261-683d-453b-b3e9-37e22f6e8940" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="test step1" id="cc859a1b-f235-490b-b07f-396c169238ab"><con:settings/><con:config><script>log.info "hello world"</script></con:config></con:testStep><con:testStep type="groovy" name="test step2" id="e5c4d15b-878b-4b9b-ad03-b0eba0ded85b"><con:settings/><con:config><script>//if and for statements
+
+def i = 9
+if (i == 10)
+{
+	log.info "hello world"
+}
+else
+{
+	log.info "not correct"
+}
+
+
+// for loop
+
+for (i=0; i&lt;10; i++)
+{
+	log.info "value" +i
+}
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script intro" id="0697b311-bbcf-422f-8287-55cd7a694b95"><con:settings/><con:config><script>log.info "new lesson on object oriented"/// learning about object and class
+
+//groovy is case sensitive
+
+// class is where the variables and functions are written. this is how they are used in memory, this can be thought of a table created in memory 
+// with the given variables and functions
+// objects are the instance of the  class. 
+//class is used by creating objects of the class
+Person.log = log //Keyword log is an object and cannot be used inside class. we need to initialist it to use in class 
+Person p1 = new Person()//class is used by creating objects of the class
+Person p2 = new Person()
+
+Person.sex = "Male"// static variable and value
+
+p1.name = "Abel"//value for the class
+p1.age = 12
+p2.name = "Aaron"
+p2.age = 6
+
+p1.printname()// non static function has to be called with reference. this should be declared after variable declaration
+
+log.info p1.name + "   " + p1.age + "   " + Person.sex
+log.info p2.name + "   " + p2.age
+
+p1=p2
+log.info "++++++++++++++++++++"
+log.info p1.name + "   " + p1.age
+log.info p2.name + "   " + p2.age + " " + Person.sex
+log.info "________________"
+p1.name = "Appu"
+log.info "++++++++++++++++++++"
+log.info p1.name + "   " + p1.age
+log.info p2.name + "   " + p2.age
+
+p2.printname()// to print second name
+Person.haha()//static function call with class reference
+class Person {
+		//class is the place to define the variables and functions
+	def static log// make this keyword log a global variable, has to be defined to make it recoganised inside the class	
+	def name // non static variabl
+	def age
+	def static sex// static variable
+
+
+public void printname(){
+	log.info("name of person $name")// keyword log cannot be recoganised inside a class. 
+	log.info ("name of person $name Gender of person is $sex")//non static function can access static variable
+	xyz()
+	qwe()
+}
+
+public static void haha(){
+	//log.info (name) // static function cannot access non static variable inside static function
+	log.info "hahaha gender of $sex"// static variable is called inside static function
+	//xyz()//error as static cannot access non static
+	qwe()
+}
+
+
+public void xyz(){
+	log.info "inside xyz"	
+}
+
+public static void qwe(){
+	log.info "static function inside static qwe function"
+}
+
+}</script></con:config></con:testStep><con:testStep type="groovy" name="Phone" id="ec87f11e-c5ba-4a26-8e92-07362863f8a9"><con:settings/><con:config><script>log.info "trying to print only one caller number for 2 classes"
+
+PPP.log = log// keyword log initally declared as log cannot be used inside class
+PPP.callernumber = 1234 //declaring this statically
+
+
+PPP p1 = new PPP()//object created for class
+//variable decleration with value for class1
+//p1.callernumber = "1111"  
+p1.recnumber = "222"
+p1.functionone()
+
+PPP p2 = new PPP()
+//variable decleration with value for class2
+//p2.callernumber = "88881111"  //variable decleration with value
+p2.recnumber = "0000222"
+p2.functionone()
+
+PPP.switchoff()
+
+
+
+class PPP{
+	def static log
+	def static callernumber;
+	def recnumber;
+
+public void functionone(){
+	log.info ("$callernumber is calling $recnumber")
+}
+public static void switchoff(){
+}
+
+	
+}
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="92fba28c-d00e-49fd-a60b-86359308b15b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 2" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="2aff44bc-1bd2-48ab-81ca-d079af54d144" name="TestSuite 2"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:properties/></con:testSuite><con:testSuite id="8e557237-c039-4ca4-80ee-123735cf9b44" name="TestSuite 3"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
